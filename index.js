@@ -40,9 +40,8 @@ app.post("/api/bookings",async(req , res)=>{
         })
     }
 
-
 })
-// get api
+
 app.get("/api/bookings",async(req,res)=>{
     const completebookings=await Booking.find()
    return res.status(200).json({
@@ -51,12 +50,10 @@ app.get("/api/bookings",async(req,res)=>{
         message:"all bookings found successfully"
     })
 })
-// get api by id
+
 app.get('/api/bookings/:id',async (req,res)=>{
     const {id}=req.params
- 
     const specificbooking = await Booking.findOne({_id:id})
- 
     res.json({
        success : true,
        data : specificbooking,
@@ -64,7 +61,7 @@ app.get('/api/bookings/:id',async (req,res)=>{
     })
  
  })
-// put api 
+
 app.put("/api/bookings/:id", async (req,res)=>{
     const {id}=req.params
     const { name,seats, from ,destination}=req.body;
@@ -80,7 +77,6 @@ app.put("/api/bookings/:id", async (req,res)=>{
     })
     
 })
-// patch api by id
 app.patch("/api/bookings/:id", async (req,res)=>{
     const {id}=req.params
     const {seats}=req.body;
@@ -96,7 +92,7 @@ app.patch("/api/bookings/:id", async (req,res)=>{
     })
     
 })
-// delete api by id
+
 app.delete("/api/bookings/:id", async(req,res)=>{
     const {id}=req.params
     await Booking.deleteOne({id:id})
@@ -129,8 +125,8 @@ app.post("/api/buses",async(req , res)=>{
     }
 
 
-})
-// get api f all buses
+});
+
 
 app.get("/api/buses",async(req,res)=>{
     const allbuses=await Bus.find()
@@ -140,7 +136,7 @@ app.get("/api/buses",async(req,res)=>{
         message:"all buses found successfully"
     })
 });
-// get api by id
+
 app.get("/api/buses/:id" ,async(req,res)=>{
     const {id}=req.params;
     const data = await Product.findOne({_id:id})
@@ -152,7 +148,7 @@ app.get("/api/buses/:id" ,async(req,res)=>{
         })
 
 })
-//put api
+
 app.put("/api/buses/:id", async (req,res)=>{
     const {id}=req.params
     const { busno,busname,seats}=req.body;
@@ -168,7 +164,7 @@ app.put("/api/buses/:id", async (req,res)=>{
     })
     
 })
-// patch api 
+ 
 app.patch("/api/buses/:id", async (req,res)=>{
     const {id}=req.params
     const {seats}=req.body;
@@ -183,7 +179,7 @@ app.patch("/api/buses/:id", async (req,res)=>{
         message:"data updated successfully"
     })
 })
-//delete bus api 
+ 
 app.delete("/api/buses/:id", async(req,res)=>{
     const {id}=req.params
     await Bus.deleteOne({_id:id})
